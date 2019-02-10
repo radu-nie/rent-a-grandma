@@ -1,0 +1,75 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div class="margin-top-20">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login" autocomplete="off">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title fxLayout="column" fxLayoutAlign="center center" class="center">
+                        <section class="logo-holder">
+                            <img src="./../../assets/images/logo.png" class="logo" />
+                        </section>
+                        <mat-divider></mat-divider>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <i>
+                            <h2>Register</h2>
+                        </i>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="login-form-container" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10px">
+
+                        <mat-form-field>
+                            <input matInput type="text" formControlName="firstName" class="form-control" autofocus
+                                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                            <mat-label>
+                                <mat-icon>edit</mat-icon> <i> First Name</i>
+                            </mat-label>
+                            <mat-error *ngIf="submitted && f.firstName.errors && f.firstName.errors.required">First
+                                name is
+                                required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                            <mat-label>
+                                <mat-icon>edit</mat-icon> <i> Last Name</i>
+                            </mat-label>
+                            <mat-error *ngIf="submitted && f.lastName.errors && f.lastName.errors.required">Last name
+                                is
+                                required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                            <mat-label>
+                                <mat-icon>account_circle</mat-icon> <i> Username</i>
+                            </mat-label>
+                            <mat-error *ngIf="submitted && f.username.errors && f.username.errors.required">Username is
+                                required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <mat-label>
+                                <mat-icon>lock</mat-icon> <i> Password</i>
+                            </mat-label>
+                            <mat-error *ngIf="submitted && f.password.errors && f.password.errors.required">Password is
+                                required</mat-error>
+                            <mat-error *ngIf="submitted && f.password.errors && f.password.errors.minlength">Password
+                                must
+                                be at least 6 characters</mat-error>
+
+                        </mat-form-field>
+
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" fxFlex="50" align="start" [disabled]="loading">Register</button>
+                        <a [routerLink]="['/login']" align="end" mat-button color="primary">Cancel</a>
+                    </mat-card-actions>
+                </mat-card-footer>
+
+            </mat-card>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./assets/styles/loader.scss";
+
+body {
+    background-image: url('./assets/images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+h2 {
+    margin: 12px 0px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.mat-toolbar a,
+.mat-toolbar a:hover,
+.mat-toolbar a:focus {
+    color: white;
+}
+
+.right-align {
+    text-align: right;
+    float: right;
+}
+
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+
+.login {
+    .mat-card-header-text {
+        width: 100%;
+    }
+}
+
+.login-form-container>* {
+    width: 100%;
+}
+
+.logo {
+    width: 160px;
+    height: auto;
+
+}
+
+.logo-holder {
+    padding-bottom: 10px;
+}

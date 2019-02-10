@@ -1,0 +1,16 @@
+{
+    "name": "Filemanager",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "client": "cd client && npm start",
+        "server": "cd server && npm start",
+        "start": "concurrently \"npm run client\" \"npm run server\""
+    },
+    "keywords": [],
+    "author": "Nie Radu Alexandru",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^4.1.0"
+    }
+}
