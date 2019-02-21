@@ -1,5 +1,5 @@
 {
-    "name": "Filemanager",
+    "name": "Menaj",
     "version": "1.0.0",
     "description": "",
     "scripts": {
@@ -9,7 +9,7 @@
     },
     "keywords": [],
     "author": "Nie Radu Alexandru",
-    "license": "ISC",
+    "license": "UNLICENSED",
     "devDependencies": {
         "concurrently": "^4.1.0"
     }

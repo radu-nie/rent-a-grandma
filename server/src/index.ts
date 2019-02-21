@@ -6,13 +6,12 @@ import compression from "compression";
 import moment from "moment";
 
 import * as userRoutes from './routes/user';
-import * as fileRoutes from './routes/file';
 
 const mongoose = require('mongoose');
 const config = require('config');
 
 var device = require('express-device');
-const port = 3300;
+const port = 4300;
 
 mongoose.connect(config.get('dbConfig.url'));
 
@@ -43,7 +42,6 @@ app.use(device.capture({
 
 app.use('/api/users', userRoutes.userRouter);
 
-app.use('/api/file', fileRoutes.fileRouter);
 
 
 app.listen(port, () => {
