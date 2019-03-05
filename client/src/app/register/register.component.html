@@ -19,37 +19,26 @@
                     <div class="login-form-container" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10px">
 
                         <mat-form-field>
-                            <input matInput type="text" formControlName="firstName" class="form-control" autofocus
-                                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                            <input matInput type="text" formControlName="name" class="form-control" autofocus [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
                             <mat-label>
-                                <mat-icon>edit</mat-icon> <i> First Name</i>
+                                <ion-icon name="contact"></ion-icon> <i>Name</i>
                             </mat-label>
-                            <mat-error *ngIf="submitted && f.firstName.errors && f.firstName.errors.required">First
-                                name is
-                                required</mat-error>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <input matInput type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-                            <mat-label>
-                                <mat-icon>edit</mat-icon> <i> Last Name</i>
-                            </mat-label>
-                            <mat-error *ngIf="submitted && f.lastName.errors && f.lastName.errors.required">Last name
-                                is
+                            <mat-error *ngIf="submitted && f.name.errors && f.name.errors.required">Name is
                                 required</mat-error>
                         </mat-form-field>
 
                         <mat-form-field>
-                            <input matInput type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                            <input matInput type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                             <mat-label>
-                                <mat-icon>account_circle</mat-icon> <i> Username</i>
+                                <ion-icon name="contact"></ion-icon> <i> Email</i>
                             </mat-label>
-                            <mat-error *ngIf="submitted && f.username.errors && f.username.errors.required">Username is
+                            <mat-error *ngIf="submitted && f.email.errors && f.email.errors.required">Email is
                                 required</mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                             <mat-label>
-                                <mat-icon>lock</mat-icon> <i> Password</i>
+                                <ion-icon name="lock"></ion-icon> <i> Password</i>
                             </mat-label>
                             <mat-error *ngIf="submitted && f.password.errors && f.password.errors.required">Password is
                                 required</mat-error>
