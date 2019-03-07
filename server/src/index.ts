@@ -6,6 +6,7 @@ import compression from "compression";
 import moment from "moment";
 
 import * as userRoutes from './routes/user';
+import { serviceRouter } from "./routes/servicesT";
 
 const mongoose = require('mongoose');
 const config = require('config');
@@ -41,7 +42,7 @@ app.use(device.capture({
 }));
 
 app.use('/api/users', userRoutes.userRouter);
-
+app.use('/api/services', serviceRouter);
 
 
 app.listen(port, () => {
