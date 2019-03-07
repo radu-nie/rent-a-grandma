@@ -12,5 +12,8 @@
     "license": "UNLICENSED",
     "devDependencies": {
         "concurrently": "^4.1.0"
+    },
+    "dependencies": {
+        "@types/mongoose": "^5.3.20"
     }
 }
