@@ -4,7 +4,7 @@
             <ion-card-header>
                 <ion-card-title fxLayout="column" fxLayoutAlign="center center" class="center">
                     <section class="logo-holder">
-                        <img src="./../../assets/images/logo.png" class="logo" />
+                        <h1>LOGO</h1>
                     </section>
                     <mat-divider></mat-divider>
                 </ion-card-title>
@@ -20,7 +20,7 @@
                     </ion-item>
                     <mat-error *ngIf="submitted && f.email.errors && f.email.errors.required">Email is
                         required</mat-error>
-
+                    <mat-error *ngIf="submitted && f.email.errors && f.email.errors.email">Email format is wrong</mat-error>
                     <ion-item>
                         <ion-label position="floating">
                             <ion-icon>lock</ion-icon> <i> Password</i>
@@ -33,7 +33,8 @@
 
             </ion-card-content>
         </ion-card>
-        <ion-button expand="full" fill="solid" [disabled]="loading" type="submit" color="primary" strong="true">Login</ion-button>
+        <ion-button expand="full" fill="solid" [disabled]="loading" type="button" (click)="onSubmit()" color="primary"
+            strong="true">Login</ion-button>
         <ion-button expand="full" fill="solid" [disabled]="loading" type="button" [routerLink]="['/register']" color="secondary">Register</ion-button>
 
     </form>

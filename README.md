@@ -14,7 +14,7 @@ find a person who can help you
 # Extra notes
 - Database used for the moment is MONGO DB held in ATLAS (cloud);
 
-- Client app wil run in localhost:4200 and server will be running in localhost:3300;
+- Client app wil run in localhost:4200 and server will be running in localhost:4300;
 
 
 PS: you will need CORS enabled in order to comunicate to different port, this can be fixed later with a proxy or JSONP but for now, in chrome use this extension:  https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
