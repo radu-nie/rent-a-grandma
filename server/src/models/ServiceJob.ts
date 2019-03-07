@@ -1,6 +1,6 @@
 //import mongoose = require("mongoose");
 import { Document, Schema, Model, model } from "mongoose";
-import { ServiceJob } from '../../../common/models/ServiceJob';
+import { ServiceJob } from '../helpers/ServiceJob';
 
 //var Schema = mongoose.Schema;
 
