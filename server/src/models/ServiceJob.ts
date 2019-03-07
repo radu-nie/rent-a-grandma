@@ -11,6 +11,6 @@ type ServiceJobType = ServiceJob & Document;
 
 //var ServiceJobModel = mongoose.model<ServiceJobType>("ServiceJob", serviceJobSchema);
 //mongoose.exports = ServiceJobModel;
+const ServiceJobModel = model<ServiceJobType>("ServiceJob", serviceJobSchema);
+export { ServiceJobModel }
 
-export const ServiceJobModel = model<ServiceJobType>("ServiceJob", serviceJobSchema);
-export default ServiceJobModel;

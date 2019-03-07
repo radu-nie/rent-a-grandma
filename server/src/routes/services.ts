@@ -1,10 +1,13 @@
 import { Router } from "express";
+import { ServiceJobModel } from "../models/ServiceJob";
+const serviceRouter: Router = Router();
+//const ServiceJobModel = require("../models/ServiceJob");
 
-const router: Router = Router();
-const ServiceJobModel = require("../models/ServiceJob");
-
-router.get('/services', (request: Request, response: any) => {
+serviceRouter.get('', (request: Request, response: any) => {
     ServiceJobModel.find({}, function (error: any, serviceJobs: any) {
         response.send(serviceJobs);
     });
 });
+
+
+export { serviceRouter }

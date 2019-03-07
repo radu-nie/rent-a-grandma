@@ -6,7 +6,7 @@ import compression from "compression";
 import moment from "moment";
 
 import * as userRoutes from './routes/user';
-import { serviceRouter } from "./routes/servicesT";
+import { serviceRouter } from "./routes/services";
 
 const mongoose = require('mongoose');
 const config = require('config');

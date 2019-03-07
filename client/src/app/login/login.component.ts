@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../_services';
 import { ActionSheetController } from '@ionic/angular';
-
+import { Sim } from '@ionic-native/sim/ngx';
 
 
 
@@ -18,14 +18,15 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-
+    r: any;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        public actionSheetController: ActionSheetController
+        public actionSheetController: ActionSheetController,
+        private sim: Sim
     ) { }
 
     ngOnInit() {
@@ -39,6 +40,23 @@ export class LoginComponent implements OnInit {
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+        this.sim.getSimInfo().then(
+            (info) => {
+                debugger;
+                this.r = info
+            },
+            (err) => console.log('Unable to get sim info: ', err)
+        );
+
+        this.sim.hasReadPermission().then(
+            (info) => console.log('Has permission: ', info)
+        );
+
+        this.sim.requestReadPermission().then(
+            () => console.log('Permission granted'),
+            () => console.log('Permission denied')
+        );
     }
 
     // convenience getter for easy access to form fields
