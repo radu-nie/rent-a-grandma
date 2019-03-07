@@ -1,52 +1,41 @@
-<div class="container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayoutGap.xs="0">
-    <div class="margin-top-20">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login">
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title fxLayout="column" fxLayoutAlign="center center" class="center">
-                        <section class="logo-holder">
-                            <img src="./../../assets/images/logo.png" class="logo" />
-                        </section>
-                        <mat-divider></mat-divider>
-                    </mat-card-title>
-                    <mat-card-subtitle>
-                        <i>
-                            <h2>Login</h2>
-                        </i>
-                    </mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="login-form-container">
-                        <mat-form-field>
-                            <input matInput type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
-                                tabindex="0" autofocus />
-                            <mat-label>
-                                <mat-icon>account_circle</mat-icon> <i> Username</i>
-                            </mat-label>
-                            <mat-error *ngIf="submitted && f.username.errors && f.username.errors.required">Username is
-                                required</mat-error>
-                        </mat-form-field>
+<ion-content padding>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login">
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title fxLayout="column" fxLayoutAlign="center center" class="center">
+                    <section class="logo-holder">
+                        <h1>LOGO</h1>
+                    </section>
+                    <mat-divider></mat-divider>
+                </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <div class="login-form-container">
+                    <ion-item>
+                        <ion-label position="floating">
+                            <ion-icon>account_circle</ion-icon> <i> Email</i>
+                        </ion-label>
+                        <ion-input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                            tabindex="0" autofocus></ion-input>
+                    </ion-item>
+                    <mat-error *ngIf="submitted && f.email.errors && f.email.errors.required">Email is
+                        required</mat-error>
+                    <mat-error *ngIf="submitted && f.email.errors && f.email.errors.email">Email format is wrong</mat-error>
+                    <ion-item>
+                        <ion-label position="floating">
+                            <ion-icon>lock</ion-icon> <i> Password</i>
+                        </ion-label>
+                        <ion-input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></ion-input>
+                    </ion-item>
+                    <mat-error *ngIf="submitted && f.password.errors && f.password.errors.required">Password is
+                        required</mat-error>
+                </div>
 
-                        <mat-form-field>
-                            <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                            <mat-label>
-                                <mat-icon>lock</mat-icon> <i> Password</i>
-                            </mat-label>
-                            <mat-error *ngIf="submitted && f.username.errors && f.password.errors.required">Password is
-                                required</mat-error>
-                        </mat-form-field>
+            </ion-card-content>
+        </ion-card>
+        <ion-button expand="full" fill="solid" [disabled]="loading" type="button" (click)="onSubmit()" color="primary"
+            strong="true">Login</ion-button>
+        <ion-button expand="full" fill="solid" [disabled]="loading" type="button" [routerLink]="['/register']" color="secondary">Register</ion-button>
 
-                    </div>
-                </mat-card-content>
-                <mat-card-footer>
-                    <mat-card-actions>
-                        <button mat-raised-button color="primary" fxFlex="50" align="start" [disabled]="loading">Login</button>
-                        <a [routerLink]="['/register']" align="end" mat-button color="primary">Register</a>
-                    </mat-card-actions>
-                </mat-card-footer>
-
-            </mat-card>
-
-        </form>
-    </div>
-</div>
+    </form>
+</ion-content>

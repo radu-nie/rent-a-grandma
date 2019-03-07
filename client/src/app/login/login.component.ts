@@ -4,6 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../_services';
+import { ActionSheetController } from '@ionic/angular';
+
+
+
 
 @Component({
     templateUrl: 'login.component.html',
@@ -20,11 +24,13 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private alertService: AlertService,
+        public actionSheetController: ActionSheetController
+    ) { }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
             password: ['', Validators.required]
         });
 
@@ -38,7 +44,9 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
+
     onSubmit() {
+        debugger;
         this.submitted = true;
 
         // stop here if form is invalid
@@ -47,7 +55,7 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
+        this.authenticationService.login(this.f.email.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
@@ -58,4 +66,5 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
+
 }

@@ -1,9 +1,8 @@
 export class User {
     id: number;
-    username: string;
+    email: string;
     password: string;
-    firstName: string;
-    lastName: string;
+    name: string;
     salt: string;
     active: boolean;
     date_added: Date;

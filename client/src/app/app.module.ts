@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouteReuseStrategy } from '@angular/router';
+
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
-import { routing } from './app.routing';
-
-import { AlertComponent } from './_directives';
+import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './_guards';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertService, AuthenticationService, UserService } from './_services';
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 //Angular Material Components
 import { MatCheckboxModule, MatNativeDateModule, MatDividerModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
@@ -50,76 +48,73 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoaderComponent } from './_helpers/loader/loader.component';
 import { LoaderService } from './_helpers/loader/loader.service';
+import { AlertComponent } from './_directives';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
+import { HomeComponent } from './home/home.page';
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        routing,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        MatTableModule,
-        MatToolbarModule,
-        MatPaginatorModule,
-        MatDatepickerModule,
-        MatFormFieldModule,
-        MatNativeDateModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatButtonModule,
-        MatInputModule,
-        MatAutocompleteModule,
-        MatDatepickerModule,
-        MatFormFieldModule,
-        MatRadioModule,
-        MatSelectModule,
-        MatSliderModule,
-        MatSlideToggleModule,
-        MatMenuModule,
-        MatSidenavModule,
-        MatToolbarModule,
-        MatListModule,
-        MatGridListModule,
-        MatCardModule,
-        MatStepperModule,
-        MatTabsModule,
-        MatExpansionModule,
-        MatButtonToggleModule,
-        MatChipsModule,
-        MatIconModule,
-        MatProgressSpinnerModule,
-        MatProgressBarModule,
-        MatDialogModule,
-        MatTooltipModule,
-        MatSnackBarModule,
-        MatTableModule,
-        MatSortModule,
-        MatPaginatorModule,
-        MatDividerModule,
-        FlexLayoutModule
-    ],
-    entryComponents: [],
-
-    declarations: [
-        AppComponent,
-        AlertComponent,
-        HomeComponent,
-        LoginComponent,
-        RegisterComponent,
-        LoaderComponent
-    ],
-    providers: [
-        AuthGuard,
-        AlertService,
-        AuthenticationService,
-        UserService,
-        LoaderService,
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    AlertComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    LoaderComponent
+  ],
+  entryComponents: [],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatButtonToggleModule,
+    MatChipsModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatDividerModule
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    AuthGuard,
+    AlertService,
+    AuthenticationService,
+    UserService,
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
+  bootstrap: [AppComponent]
 })
-
 export class AppModule { }

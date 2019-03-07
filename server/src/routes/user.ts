@@ -28,7 +28,7 @@ userRouter.post('/authenticate', (req: Request, res: any) => {
                         fistName: user.fistName,
                         lastName: user.lastName,
                     }, config.get('secret'), { expiresIn: '10m' });
-                    res.json({
+                    res.jsonp({
                         id: user._id,
                         username: user.userName,
                         firstName: user.firstName,
@@ -37,19 +37,19 @@ userRouter.post('/authenticate', (req: Request, res: any) => {
                     })
                 } else {
                     /** Password incorrect */
-                    res.json(400, {
+                    res.jsonp(400, {
                         message: 'Username or password is incorrect'
                     });
                 }
             } else {
-                res.json(400, {
+                res.jsonp(400, {
                     message: 'Username or password is incorrect'
                 });
             }
         })
         .catch((err: any) => {
             console.log('Error authenticating', err);
-            res.json(400, {
+            res.jsonp(400, {
                 message: 'Username or password is incorrect'
             });
         });
@@ -70,11 +70,11 @@ userRouter.post('/register', (req: Request, res: any) => {
         save()
         .then((result: any) => {
             console.log('Registration success', result);
-            res.json();
+            res.jsonp();
         })
         .catch((err: Error) => {
             console.log('Registration Error', err);
-            res.json(400, {
+            res.jsonp(400, {
                 message: 'Username or password is incorrect'
             });
         });
@@ -98,11 +98,11 @@ userRouter.get('', validateJWT, (req: any, res: any, next) => {
                             lastName: user.lastName
                         })
                     });
-                    res.json(userArr);
+                    res.jsonp(userArr);
                 })
                 .catch((err: any) => {
                     console.log("Error retrieving list of users", err);
-                    res.json(400, {
+                    res.jsonp(400, {
                         message: 'No existing users'
                     });
                 });
@@ -120,11 +120,11 @@ userRouter.get('/:id', validateJWT, (req: any, res: any) => {
         } else {
             User.findOne({ id: req.params.id }).exec()
                 .then((user: any) => {
-                    res.json(user);
+                    res.jsonp(user);
                 })
                 .catch((err: any) => {
                     console.log("Error retrieving requested user", err);
-                    res.json(400, {
+                    res.jsonp(400, {
                         message: 'User does not exist'
                     });
                 });
@@ -145,11 +145,11 @@ userRouter.delete('/:id', validateJWT, (req: any, res: any) => {
                 .exec()
                 .then((response: any) => {
                     console.log('User deleted', response);
-                    res.json('User deleted');
+                    res.jsonp('User deleted');
                 })
                 .catch((err: any) => {
                     console.log('Error deleting', err);
-                    res.json(400, err);
+                    res.jsonp(400, err);
                 });
         }
     });
