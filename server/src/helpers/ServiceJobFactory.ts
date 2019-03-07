@@ -9,7 +9,7 @@ export enum ServiceJobEnum {
 }
 
 export class ServiceJobFactory {
-    public static createServiceJob(type: ServiceJobEnum): ServiceJob {
+    public static createServiceJob(type: ServiceJobEnum): any {
         if (type === ServiceJobEnum.HOUSEKEEPING) {
             return new HouseKeeping("House Keeping", "House Keeping Description");
         } else if (type === ServiceJobEnum.ELDERHELP) {
