@@ -4,10 +4,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../_services';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, Platform } from '@ionic/angular';
 import { Sim } from '@ionic-native/sim/ngx';
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
-
+import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
+import { Backlight } from '@ionic-native/backlight/ngx';
 
 @Component({
     templateUrl: 'login.component.html',
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-    r: any;
+    gps: Geoposition;
+    flashLight: boolean = false;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -26,7 +29,11 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
         public actionSheetController: ActionSheetController,
-        private sim: Sim
+        private sim: Sim,
+        private nativeGeocoder: NativeGeocoder,
+        private geolocation: Geolocation,
+        private platform: Platform,
+        private backlight: Backlight
     ) { }
 
     ngOnInit() {
@@ -41,30 +48,42 @@ export class LoginComponent implements OnInit {
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
-        this.sim.getSimInfo().then(
-            (info) => {
-                debugger;
-                this.r = info
-            },
-            (err) => console.log('Unable to get sim info: ', err)
-        );
+        this.platform.ready().then(() => {
+            this.test();
 
-        this.sim.hasReadPermission().then(
-            (info) => console.log('Has permission: ', info)
-        );
+        })
 
-        this.sim.requestReadPermission().then(
-            () => console.log('Permission granted'),
-            () => console.log('Permission denied')
-        );
+        // this.sim.getSimInfo().then(
+        //     (info) => {
+        //         this.r = info
+        //     },
+        //     (err) => console.log('Unable to get sim info: ', err)
+        // );
+
+        // this.sim.hasReadPermission().then(
+        //     (info) => console.log('Has permission: ', info)
+        // );
+
+        // this.sim.requestReadPermission().then(
+        //     () => console.log('Permission granted'),
+        //     () => console.log('Permission denied')
+        // );
     }
 
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
+    test() {
+        var options = { timeout: 10000, enableHighAccuracy: false };
+        this.geolocation.getCurrentPosition(options).then((resp) => {
+            this.gps = resp;
+        }).catch((error) => {
+            this.gps = error;
+            console.log('Error getting location', error);
+        });
+    }
 
     onSubmit() {
-        debugger;
         this.submitted = true;
 
         // stop here if form is invalid
@@ -85,4 +104,13 @@ export class LoginComponent implements OnInit {
                 });
     }
 
+    toggleFlashLight() {
+
+        // Turn backlight on
+        this.backlight.on().then(() => console.log('backlight on'));
+
+
+
+
+    }
 }

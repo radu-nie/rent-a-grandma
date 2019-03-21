@@ -4,7 +4,10 @@
             <ion-card-header>
                 <ion-card-title fxLayout="column" fxLayoutAlign="center center" class="center">
                     <section class="logo-holder">
-                        <h1>LOGO {{r}}</h1>
+                        <h1>LOGO</h1>
+                        <p>{{gps.coords.latitude}}</p>
+                        <p>{{gps.coords.longitude}}</p>
+
                     </section>
                     <mat-divider></mat-divider>
                 </ion-card-title>
@@ -36,6 +39,8 @@
         <ion-button expand="full" fill="solid" [disabled]="loading" type="button" (click)="onSubmit()" color="primary"
             strong="true">Login</ion-button>
         <ion-button expand="full" fill="solid" [disabled]="loading" type="button" [routerLink]="['/register']" color="secondary">Register</ion-button>
+        <ion-button expand="full" fill="solid" type="button" color="secondary" (click)="toggleFlashLight(!flashLight)">Lanterna
+            Toggle</ion-button>
 
     </form>
 </ion-content>
