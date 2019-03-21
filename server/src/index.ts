@@ -25,6 +25,7 @@ app.disable('x-powered-by');
 app.use(bodyParser.json({
     limit: '50mb'
 }));
+
 app.use(bodyParser.urlencoded({
     extended: true,
     limit: '50mb',
@@ -48,3 +49,33 @@ app.use('/api/services', serviceRouter);
 app.listen(port, () => {
     console.log(`Listening on port ${port}!`);
 });
+/*
+async function createCustomer(customerData: any) {
+    const customer = new Customer(customerData);
+    const result = await customer.save();
+    console.log("Created customer : " + result);
+}
+
+createCustomer({
+    userName: "customer1UserName",
+    password: "C1UN",
+    firstName: "C1_F_N",
+    lastName: "C1_L_N",
+    active: true,
+    token: "C1_Token"
+});
+
+async function createServiceJobProvider(serviceJobProviderData: any) {
+    const serviceJobProvider = new ServiceJobProvider(serviceJobProviderData);
+    const result = await serviceJobProvider.save();
+    console.log("Created service job provider : " + result);
+}
+
+createServiceJobProvider({
+    userName: "provider1UserName",
+    password: "P1UN",
+    firstName: "P1_F_N",
+    lastName: "P1_L_N",
+    active: true,
+    token: "P1_Token"
+});*/

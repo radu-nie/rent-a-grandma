@@ -12,6 +12,13 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const randtoken = require('rand-token')
 
+//#region MODELS REFERENCES
+
+const Customer = require("./models/Customer");
+const ServiceJobProvider = require("./models/ServiceJobProvider");
+
+//#endregion
+
 
 userRouter.post('/authenticate', (req: Request, res: any) => {
 
@@ -57,13 +64,25 @@ userRouter.post('/authenticate', (req: Request, res: any) => {
 });
 
 userRouter.post('/register', (req: Request, res: any) => {
-    const user = new User({
-        _id: mongoose.Types.ObjectId(),
-        userName: req.body.username,
-        password: bcrypt.hashSync(req.body.password, 7),
-        firstName: req.body.firstName,
-        lastName: req.body.lastName
-    });
+
+    let user = null;
+    if (req.body._type == "Customer") {
+        user = new Customer({
+            _id: mongoose.Types.ObjectId(),
+            userName: req.body.username,
+            password: bcrypt.hashSync(req.body.password, 7),
+            firstName: req.body.firstName,
+            lastName: req.body.lastName
+        })
+    } else {
+        user = new ServiceJobProvider({
+            _id: mongoose.Types.ObjectId(),
+            userName: req.body.username,
+            password: bcrypt.hashSync(req.body.password, 7),
+            firstName: req.body.firstName,
+            lastName: req.body.lastName
+        });
+    }
 
     /** Do user save action */
     user.
@@ -155,6 +174,21 @@ userRouter.delete('/:id', validateJWT, (req: any, res: any) => {
     });
 });
 
+userRouter.get("/search/:customer", (request: Request, response: any) => {
+
+    if (request.params.customer == "Pula") {
+        Customer.findOne({}).exec()
+            .then((user: any) => {
+                response.jsonp(user[0]._);
+            })
+            .catch((err: any) => {
+                console.log("Error retrieving requested user", err);
+                response.jsonp(400, {
+                    message: 'User does not exist'
+                });
+            });
+    }
+});
 
 function validateJWT(req: any, res: Response, next: NextFunction) {
     // Get auth header value
@@ -173,7 +207,6 @@ function validateJWT(req: any, res: Response, next: NextFunction) {
         res.sendStatus(403);
     }
 }
-
 
 //exports.userRouter = userRouter;
 
