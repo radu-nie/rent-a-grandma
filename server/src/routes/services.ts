@@ -1,5 +1,5 @@
 import { Router, Request } from "express";
-const ServiceJob = require("../models/ServiceJob");
+const ServiceJob = require("../helpers/ServiceJob");
 
 const serviceRouter: Router = Router();
 

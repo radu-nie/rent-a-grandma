@@ -5,7 +5,6 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../_services';
 import { ActionSheetController, Platform } from '@ionic/angular';
-import { Sim } from '@ionic-native/sim/ngx';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
@@ -13,7 +12,8 @@ import { Backlight } from '@ionic-native/backlight/ngx';
 
 @Component({
     templateUrl: 'login.component.html',
-    styleUrls: ['login.component.scss']
+    styleUrls: ['login.component.scss'],
+    providers: [Geolocation, Backlight]
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
         public actionSheetController: ActionSheetController,
-        private sim: Sim,
         private nativeGeocoder: NativeGeocoder,
         private geolocation: Geolocation,
         private platform: Platform,

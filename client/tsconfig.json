@@ -1,12 +1,13 @@
 {
-  "compileOnSave": false,
+  "compileOnSave": true,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "baseUrl": "../",
+    "outDir": "../dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "module": "es2015",
     "moduleResolution": "node",
+    "mapRoot": "./",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -18,5 +19,8 @@
       "es2018",
       "dom"
     ]
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
   }
 }
