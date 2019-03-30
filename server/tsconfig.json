@@ -3,7 +3,7 @@
     "exclude": ["node_modules"],
     "compilerOptions": {
         "baseUrl": "../",
-        "declaration": false,
+        "declaration": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "noLib": false,
@@ -16,6 +16,8 @@
         "typeRoots": ["../node_modules/@types"],
         "noImplicitAny": false,
         "allowSyntheticDefaultImports": true,
+        "declarationMap": true,
+        "inlineSourceMap": true
     },
     "include": [
         "**/*.ts"
