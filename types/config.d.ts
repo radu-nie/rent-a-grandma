@@ -1,0 +1,35 @@
+export = config;
+declare const config: {
+    get: Function;
+    has: Function;
+    util: {
+        attachProtoDeep: Function;
+        cloneDeep: Function;
+        diffDeep: Function;
+        equalsDeep: Function;
+        extendDeep: Function;
+        get: Function;
+        getCmdLineArg: Function;
+        getConfigSources: Function;
+        getCustomEnvVars: Function;
+        getEnv: Function;
+        getRegExpFlags: Function;
+        has: Function;
+        initParam: Function;
+        isObject: Function;
+        loadFileConfigs: Function;
+        makeHidden: Function;
+        makeImmutable: Function;
+        parseFile: Function;
+        parseString: Function;
+        resolveDeferredConfigs: Function;
+        runStrictnessChecks: Function;
+        setModuleDefaults: Function;
+        setPath: Function;
+        stripComments: Function;
+        stripYamlComments: Function;
+        substituteDeep: Function;
+        toObject: Function;
+        util: any;
+    };
+};

@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [{
+        "label": "Start app",
+        "type": "shell",
+        "command": "npm run debug:host",
+        "presentation": {
+            "reveal": "always",
+            "panel": "new"
+        },
+        "group": "build"
+    }, {
+        "label": "Debug app",
+        "type": "npm",
+        "script": "debug:win",
+        "problemMatcher": [],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        }
+    }]
+}

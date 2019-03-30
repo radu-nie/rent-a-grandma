@@ -1,16 +1,9 @@
-// Import only what we need from express
 import { Router, Request, Response } from 'express';
-import { Interface } from 'readline';
 import { NextFunction } from 'connect';
-
-
-
-const userRouter: Router = Router();
-const jwt = require('jsonwebtoken');
-const config = require('config');
-const mongoose = require('mongoose');
-
-const bcrypt = require('bcrypt');
+import * as mongoose from 'mongoose';
+import * as config from 'config';
+import * as jwt from 'jsonwebtoken';
+import * as bcrypt from 'bcrypt';
 
 //#region MODELS REFERENCES
 import User, { IUser } from '../models/customer.model';
@@ -20,6 +13,7 @@ import User, { IUser } from '../models/customer.model';
 import UserController from '../controllers/user.controller';
 //#endregion
 
+const userRouter: Router = Router();
 
 userRouter.post('/authenticate', (req: Request, res: any) => {
 
