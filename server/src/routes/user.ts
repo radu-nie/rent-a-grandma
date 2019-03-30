@@ -6,11 +6,14 @@ import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
 
 //#region MODELS REFERENCES
-import User, { IUser } from '../models/customer.model';
+import User, { IUser } from '../models/user.model';
 //#endregion
 
 //#region CONTROLLERS REFERENCES
 import UserController from '../controllers/user.controller';
+import { request } from 'https';
+import customerModel from '../models/user.model';
+
 //#endregion
 
 const userRouter: Router = Router();
@@ -103,6 +106,16 @@ userRouter.get('', validateJWT, (req: any, res: any, next) => {
     });
 });
 
+userRouter.get("/customers", validateJWT, async (request: Request, response: Response) => {
+    const customers = await UserController.getCustomers();
+    return response.json(customers);
+});
+
+userRouter.get("/providers", validateJWT, async (request: Request, response: Response) => {
+    const providers = await UserController.getServiceProviders();
+    return response.json(providers);
+});
+
 userRouter.get('/:id', validateJWT, (req: any, res: any) => {
 
 
@@ -162,6 +175,11 @@ userRouter.get("/search/:customer", validateJWT, (request: Request, response: an
     //             });
     //         });
     // }
+});
+
+userRouter.post("/create", validateJWT, async (request: Request, response: Response) => {
+    const user = await UserController.createUser(request.body);
+    return response.json(user);
 });
 
 function validateJWT(req: any, res: Response, next: NextFunction) {

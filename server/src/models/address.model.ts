@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import { Schema, Document } from 'mongoose'
-import { IUser } from './customer.model';
+import { IUser } from './user.model';
 
 /** Service Job Model */
 export interface IAddress extends Document {
