@@ -1,9 +1,9 @@
 import { Router, Request, Response } from 'express';
 import { NextFunction } from 'connect';
 import * as mongoose from 'mongoose';
-import config from 'config';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
+import * as config from 'config';
+import * as jwt from 'jsonwebtoken';
+import * as bcrypt from 'bcrypt';
 
 //#region MODELS REFERENCES
 import User, { IUser } from '../models/customer.model';

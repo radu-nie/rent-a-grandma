@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const mongoose = require("mongoose");
-const config_1 = require("config");
-const jsonwebtoken_1 = require("jsonwebtoken");
-const bcrypt_1 = require("bcrypt");
+const config = require("config");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 //#region MODELS REFERENCES
 const customer_model_1 = require("../models/customer.model");
 //#endregion
@@ -19,14 +19,14 @@ userRouter.post('/authenticate', (req, res) => {
         console.log('Authentication User', user);
         if (user) {
             /** Check if password is same as in db */
-            if (bcrypt_1.default.compareSync(req.body.password, user.password)) {
+            if (bcrypt.compareSync(req.body.password, user.password)) {
                 /** Sign token and return */
-                var token = jsonwebtoken_1.default.sign({
+                var token = jwt.sign({
                     id: user._id,
                     username: user.userName,
                     fistName: user.fistName,
                     lastName: user.lastName,
-                }, config_1.default.get('secret'), { expiresIn: '10m' });
+                }, config.get('secret'), { expiresIn: '10m' });
                 res.jsonp({
                     id: user._id,
                     username: user.userName,
@@ -62,13 +62,13 @@ userRouter.post('/register', async (req, res) => {
     }
     const user = await user_controller_1.default.CreateUser({
         email: req.body.email,
-        password: bcrypt_1.default.hashSync(req.body.password, 7)
+        password: bcrypt.hashSync(req.body.password, 7)
     });
     return res.jsonp(user);
     /** Reminder: if relationship wanted: use user._id for refference */
 });
 userRouter.get('', validateJWT, (req, res, next) => {
-    jsonwebtoken_1.default.verify(req.token, config_1.default.get('secret'), (err, authData) => {
+    jwt.verify(req.token, config.get('secret'), (err, authData) => {
         // If token not ok lock route
         if (err) {
             res.sendStatus(403);
@@ -98,7 +98,7 @@ userRouter.get('', validateJWT, (req, res, next) => {
     });
 });
 userRouter.get('/:id', validateJWT, (req, res) => {
-    jsonwebtoken_1.default.verify(req.token, config_1.default.get('secret'), (err, authData) => {
+    jwt.verify(req.token, config.get('secret'), (err, authData) => {
         // If token not ok lock route
         if (err) {
             res.sendStatus(403);
@@ -118,7 +118,7 @@ userRouter.get('/:id', validateJWT, (req, res) => {
     });
 });
 userRouter.delete('/:id', validateJWT, (req, res) => {
-    jsonwebtoken_1.default.verify(req.token, config_1.default.get('secret'), (err, authData) => {
+    jwt.verify(req.token, config.get('secret'), (err, authData) => {
         // If token not ok lock route
         if (err) {
             res.sendStatus(403);

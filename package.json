@@ -14,7 +14,7 @@
         "debug:host": "concurrently \" ionic serve -lc\" \"npm run _server:start\" ",
         "_client:start": "cd client && npm start",
         "_client:build": "ng build --configuration=dev --output-path=./dist/client --aot",
-        "_server:start": "tsc-watch --project ./server/tsconfig.json --onSuccess \"node --inspect \"./dist/server/index.js\"\"",
+        "_server:start": "tsc-watch --project ./server/tsconfig.json --onSuccess \"node --inspect --nolazy \"./dist/server/index.js\"\"",
         "_server:build": "tsc -p ./server",
         "_server:swagger": "npm run swagger-gen && npm run routes-gen && tsc -p ./server && tsc && npm run copy-swagger-ui && concurrently \"tsc -w --p ./server\" \"nodemon --inspect dist/server/start.js\" ",
         "swagger-gen": "tsoa swagger",

@@ -14,6 +14,10 @@
         "target": "es2017",
         "allowJs": false,
         "typeRoots": ["../node_modules/@types"],
-        "noImplicitAny": false
-    }
+        "noImplicitAny": false,
+        "allowSyntheticDefaultImports": true,
+    },
+    "include": [
+        "**/*.ts"
+    ]
 }

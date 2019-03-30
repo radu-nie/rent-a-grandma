@@ -7,9 +7,10 @@
         "preLaunchTask": "typescript",
         "program": "${workspaceFolder}/src/index.ts",
         "cwd": "${workspaceFolder}",
-        "protocol": "inspector",
+        "protocol": "legacy",
         "outFiles": [
             "${workspaceFolder}/dist/**/*.js"
-        ]
+        ],
+        "restart": true
     }]
 }
