@@ -12,7 +12,7 @@
         "start:app": "concurrently \"npm run server_build\" ",
         "debug:win": "concurrently --raw \"npm run _client:start\" \"npm run _server:start\" ",
         "debug:host": "concurrently \" ionic serve -lc\" \"npm run _server:start\" ",
-        "_client:start": "tsc-watch --project ./client/tsconfig.json --onSuccess \"ionic serve -lc --no-progress\"",
+        "_client:start": "ionic serve -lc --no-progress",
         "_client:build": "tsc -p ./client",
         "_server:start": "tsc-watch --project ./server/tsconfig.json --onSuccess \"node --inspect \"./dist/server/index.js\"\"",
         "_server:build": "tsc -p ./server",

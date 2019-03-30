@@ -7,12 +7,13 @@ import { MatSnackBar } from '@angular/material';
     selector: 'alert',
     templateUrl: 'alert.component.html'
 })
-
 export class AlertComponent implements OnInit, OnDestroy {
     private subscription: Subscription;
     message: any;
 
-    constructor(private alertService: AlertService, private snackBar: MatSnackBar) { }
+    constructor(private alertService: AlertService, private snackBar: MatSnackBar) {
+
+    }
 
     ngOnInit() {
         this.subscription = this.alertService.getMessage().subscribe(message => {
