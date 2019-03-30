@@ -1,5 +1,67 @@
-<div class="container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayoutGap.xs="0">
-    <div class="margin-top-20">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login" autocomplete="off">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-img src="/assets/images/logo.png"></ion-img>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <i>
+                    <h2>Register</h2>
+                </i>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+
+                <mat-form-field>
+                    <input matInput type="text" formControlName="name" class="form-control" autofocus
+                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                    <mat-label>
+                        <ion-icon name="contact"></ion-icon> <i>Name</i>
+                    </mat-label>
+                    <mat-error *ngIf="submitted && f.name.errors && f.name.errors.required">Name is
+                        required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="text" formControlName="email" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <mat-label>
+                        <ion-icon name="contact"></ion-icon> <i> Email</i>
+                    </mat-label>
+                    <mat-error *ngIf="submitted && f.email.errors && f.email.errors.required">Email is
+                        required</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="password" formControlName="password" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <mat-label>
+                        <ion-icon name="lock"></ion-icon> <i> Password</i>
+                    </mat-label>
+                    <mat-error *ngIf="submitted && f.password.errors && f.password.errors.required">Password is
+                        required</mat-error>
+                    <mat-error *ngIf="submitted && f.password.errors && f.password.errors.minlength">Password
+                        must
+                        be at least 6 characters</mat-error>
+
+                </mat-form-field>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <button mat-raised-button color="primary" fxFlex="50" align="start"
+                    [disabled]="loading">Register</button>
+            </ion-col>
+            <ion-col>
+                <a [routerLink]="['/login']" align="end" mat-button color="primary">Cancel</a>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</form>
+<!-- <div class="container" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div class="margin-top-20" fxFlex="80">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login" autocomplete="off">
             <mat-card>
                 <mat-card-header>
@@ -16,10 +78,12 @@
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    <div class="login-form-container" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10px">
+                    <div class="login-form-container" fxLayout="column" fxLayoutAlign="center stretch"
+                        fxLayoutGap="10px">
 
                         <mat-form-field>
-                            <input matInput type="text" formControlName="name" class="form-control" autofocus [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                            <input matInput type="text" formControlName="name" class="form-control" autofocus
+                                [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
                             <mat-label>
                                 <ion-icon name="contact"></ion-icon> <i>Name</i>
                             </mat-label>
@@ -28,7 +92,8 @@
                         </mat-form-field>
 
                         <mat-form-field>
-                            <input matInput type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                            <input matInput type="text" formControlName="email" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                             <mat-label>
                                 <ion-icon name="contact"></ion-icon> <i> Email</i>
                             </mat-label>
@@ -36,7 +101,8 @@
                                 required</mat-error>
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <input matInput type="password" formControlName="password" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                             <mat-label>
                                 <ion-icon name="lock"></ion-icon> <i> Password</i>
                             </mat-label>
@@ -52,7 +118,8 @@
                 </mat-card-content>
                 <mat-card-footer>
                     <mat-card-actions>
-                        <button mat-raised-button color="primary" fxFlex="50" align="start" [disabled]="loading">Register</button>
+                        <button mat-raised-button color="primary" fxFlex="50" align="start"
+                            [disabled]="loading">Register</button>
                         <a [routerLink]="['/login']" align="end" mat-button color="primary">Cancel</a>
                     </mat-card-actions>
                 </mat-card-footer>
@@ -61,4 +128,4 @@
 
         </form>
     </div>
-</div>
+</div> -->

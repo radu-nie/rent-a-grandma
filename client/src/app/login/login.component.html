@@ -4,9 +4,9 @@
             <ion-card-header>
                 <ion-card-title fxLayout="column" fxLayoutAlign="center center" class="center">
                     <section class="logo-holder">
-                        <h1>LOGO</h1>
-                        <p>{{gps.coords.latitude}}</p>
-                        <p>{{gps.coords.longitude}}</p>
+                        <h1><img src="client/src/assets/images/logo.png" /></h1>
+                        <!-- <p>{{gps.coords.latitude}}</p>
+                        <p>{{gps.coords.longitude}}</p> -->
 
                     </section>
                     <mat-divider></mat-divider>
@@ -19,7 +19,8 @@
                             <ion-icon>account_circle</ion-icon> <i> Email</i>
                         </ion-label>
                         <ion-input type="text" formControlName="email" class="form-control"
-                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" tabindex="0" autofocus>
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" (keyup.enter)="onSubmit()"
+                            tabindex="0" autofocus>
                         </ion-input>
                     </ion-item>
                     <mat-error *ngIf="submitted && f.email.errors && f.email.errors.required">Email is
@@ -31,7 +32,8 @@
                             <ion-icon>lock</ion-icon> <i> Password</i>
                         </ion-label>
                         <ion-input type="password" formControlName="password" class="form-control"
-                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></ion-input>
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" (keyup.enter)="onSubmit()">
+                        </ion-input>
                     </ion-item>
                     <mat-error *ngIf="submitted && f.password.errors && f.password.errors.required">Password is
                         required</mat-error>
@@ -39,7 +41,7 @@
 
             </ion-card-content>
         </ion-card>
-        <ion-button expand="full" fill="solid" [disabled]="loading" type="button" (click)="onSubmit()" color="primary"
+        <ion-button expand="full" fill="solid" [disabled]="loading" type="submit" (click)="onSubmit()" color="primary"
             strong="true">Login</ion-button>
         <ion-button expand="full" fill="solid" [disabled]="loading" type="button" [routerLink]="['/register']"
             color="secondary">Register</ion-button>

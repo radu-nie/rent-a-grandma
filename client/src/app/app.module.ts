@@ -53,6 +53,7 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { HomeComponent } from './home/home.page';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { Globals } from '../globals';
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,6 +115,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
     UserService,
     LoaderService,
     NativeGeocoder,
+    Globals,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],

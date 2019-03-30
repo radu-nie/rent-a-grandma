@@ -10,14 +10,13 @@
         //"mapRoot": "../dist/server",
         "module": "commonjs",
         "outDir": "../dist/server",
-        "sourceMap": false,
+        "sourceMap": true,
         "target": "es2017",
         "allowJs": false,
         "typeRoots": ["../node_modules/@types"],
         "noImplicitAny": false,
         "allowSyntheticDefaultImports": true,
         "declarationMap": true,
-        "inlineSourceMap": true
     },
     "include": [
         "**/*.ts"

@@ -22,11 +22,11 @@ userRouter.post('/authenticate', (req: Request, res: any) => {
 
     User.findOne({ userName: req.body.username }).exec()
         .then((user: any) => {
-            console.log('Authentication User', user);
             if (user) {
                 /** Check if password is same as in db */
                 if (bcrypt.compareSync(req.body.password, user.password)) {
                     /** Sign token and return */
+
                     var token = jwt.sign({
                         id: user._id,
                         username: user.userName,
