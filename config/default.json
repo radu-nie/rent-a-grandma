@@ -2,5 +2,6 @@
     "dbConfig": {
         "url": "mongodb://db-user_1:randomPassword10@menaj-shard-00-00-fsnql.mongodb.net:27017,menaj-shard-00-01-fsnql.mongodb.net:27017,menaj-shard-00-02-fsnql.mongodb.net:27017/menaj?ssl=true&replicaSet=Menaj-shard-0&authSource=admin&retryWrites=true"
     },
-    "secret": "theDumbestSecretKeyAvailable24-7"
+    "secret": "theDumbestSecretKeyAvailable24-7",
+    "serverUrl": "http://localhost:4300/api/"
 }

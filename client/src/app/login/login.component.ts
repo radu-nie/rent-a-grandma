@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../_services';
@@ -9,6 +9,8 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
 
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 import { Backlight } from '@ionic-native/backlight/ngx';
+import { PlatformLocation } from '@angular/common';
+import { AbstractClassPart } from '@angular/compiler/src/output/output_ast';
 
 @Component({
     templateUrl: 'login.component.html',
@@ -32,8 +34,13 @@ export class LoginComponent implements OnInit {
         private nativeGeocoder: NativeGeocoder,
         private geolocation: Geolocation,
         private platform: Platform,
-        private backlight: Backlight
-    ) { }
+        private backlight: Backlight,
+        platformLocation: PlatformLocation
+    ) {
+        console.log((platformLocation as any).location);
+        console.log((platformLocation as any).location.href);
+        console.log((platformLocation as any).location.origin);
+    }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
@@ -70,7 +77,7 @@ export class LoginComponent implements OnInit {
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
+    get f(): { [key: string]: AbstractControl; } { return this.loginForm.controls; }
 
     test() {
         var options = { timeout: 10000, enableHighAccuracy: false };
@@ -95,11 +102,13 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
+                    this.submitted = false;
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
+                    this.submitted = false;
                 });
     }
 

@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-
+import { Observable } from 'rxjs';
+import { Globals } from '../..//globals';
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: HttpClient) { }
+    serverUrl: string;
+    constructor(private http: HttpClient, private globals: Globals) {
+    }
 
-    login(email: string, password: string) {
-        return this.http.post<any>(`http://localhost:4300/api/users/authenticate`, { email, password })
+    login(email: string, password: string): Observable<any> {
+        return this.http.post<any>(this.globals.serverUrl + `users/authenticate`, { email, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
@@ -19,7 +22,7 @@ export class AuthenticationService {
             }));
     }
 
-    logout() {
+    logout(): void {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
     }
