@@ -5,9 +5,9 @@
         "request": "launch",
         "name": "Debug TypeScript in Node.js",
         "preLaunchTask": "typescript",
-        "program": "${workspaceFolder}/src/index.ts",
+        "program": "${workspaceFolder}/server/src/index.ts",
         "cwd": "${workspaceFolder}",
-        "protocol": "legacy",
+        "protocol": "inspector",
         "outFiles": [
             "${workspaceFolder}/dist/**/*.js"
         ],
