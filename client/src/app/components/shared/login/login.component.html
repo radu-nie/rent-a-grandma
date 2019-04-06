@@ -1,0 +1,62 @@
+<ion-content padding>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login">
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title fxLayout="column" fxLayoutAlign="center center" class="center">
+                    <section class="logo-holder">
+                        <h1><img src="client/src/assets/images/logo.png" /></h1>
+                        <!-- <p>{{gps.coords.latitude}}</p>
+                        <p>{{gps.coords.longitude}}</p> -->
+
+                    </section>
+                    <mat-divider></mat-divider>
+                </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <div class="login-form-container">
+                    <ion-item>
+                        <ion-label>
+                            <ion-icon>account_circle</ion-icon> <i> Email</i>
+                        </ion-label>
+                        <ion-input inputmode="email" pattern="email" formControlName="email" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" (keyup.enter)="onSubmit()"
+                            tabindex="0" autofocus>
+                        </ion-input>
+                    </ion-item>
+                    <mat-error *ngIf="submitted && f.email.errors && f.email.errors.required">Email is
+                        required</mat-error>
+                    <mat-error *ngIf="submitted && f.email.errors && f.email.errors.email">Email format is wrong
+                    </mat-error>
+                    <ion-item>
+                        <ion-label>
+                            <ion-icon>lock</ion-icon> <i> Password</i>
+                        </ion-label>
+                        <ion-input inputmode="password" formControlName="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" (keyup.enter)="onSubmit()">
+                        </ion-input>
+                    </ion-item>
+                    <mat-error *ngIf="submitted && f.password.errors && f.password.errors.required">Password is
+                        required</mat-error>
+                </div>
+                <ion-item>
+                    <ion-label>
+                        <ion-icon name="images"></ion-icon> <i> POZA</i>
+                    </ion-label>
+                    <ion-input type="file" formControlName="file" id="avatar" (change)="onFileChange($event)" #fileInput
+                        class="form-control">
+                    </ion-input>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+        <ion-button expand="full" fill="solid" [disabled]="loading" type="submit" (click)="onSubmit()" color="primary"
+            strong="true">Login</ion-button>
+
+        <ion-button expand="full" fill="solid" [disabled]="loading" type="button" [routerLink]="['/register']"
+            color="secondary">Register</ion-button>
+
+        <ion-button expand="full" fill="solid" [disabled]="loading" type="button" (click)="submitPhoto()">
+            UPLOAD PHOTO</ion-button>
+
+
+    </form>
+</ion-content>

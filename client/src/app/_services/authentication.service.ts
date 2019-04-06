@@ -26,4 +26,9 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
     }
+
+    savePhoto(photo) {
+        debugger;
+        this.http.post<any>(this.globals.serverUrl + `files/upload`, photo)
+    }
 }
