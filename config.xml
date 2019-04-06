@@ -90,4 +90,5 @@
     <plugin name="cordova-plugin-geolocation" spec="4.0.1" />
     <plugin name="cordova-plugin-backlight" spec="0.0.1" />
     <plugin name="phonegap-plugin-push" spec="2.2.3" />
+    <plugin name="cordova-plugin-x-toast" spec="2.7.2" />
 </widget>

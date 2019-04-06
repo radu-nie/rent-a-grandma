@@ -1,20 +1,9 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login" autocomplete="off">
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <ion-img src="/assets/images/logo.png"></ion-img>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <i>
-                    <h2>Register</h2>
-                </i>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
+<ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
+    (ionScrollEnd)="logScrollEnd()">
 
+    <ion-row>
+        <ion-col>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login" autocomplete="off">
                 <mat-form-field>
                     <input matInput type="text" formControlName="name" class="form-control" autofocus
                         [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
@@ -47,19 +36,33 @@
                         be at least 6 characters</mat-error>
 
                 </mat-form-field>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <button mat-raised-button color="primary" fxFlex="50" align="start"
-                    [disabled]="loading">Register</button>
-            </ion-col>
-            <ion-col>
-                <a [routerLink]="['/login']" align="end" mat-button color="primary">Cancel</a>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-</form>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <button mat-raised-button color="primary" fxFlex="50" align="start"
+                                [disabled]="loading">Register</button>
+                        </ion-col>
+                        <ion-col>
+                            <a [routerLink]="['/login']" align="end" mat-button color="primary">Cancel</a>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </form>
+
+        </ion-col>
+    </ion-row>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
 <!-- <div class="container" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayoutGap.xs="0">
     <div class="margin-top-20" fxFlex="80">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login" autocomplete="off">

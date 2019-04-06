@@ -3,11 +3,23 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { AuthenticationService } from '../_services';
+import { AuthenticationService, AlertService } from '../_services';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthenticationService) { }
+    message: any;
+
+    constructor(private authenticationService: AuthenticationService, private alertService: AlertService, private snackBar: MatSnackBar) {
+        this.alertService.getMessage().subscribe(message => {
+            if (message) {
+                this.message = message;
+                this.snackBar.open(message.text, 'Close', {
+                    duration: 4000,
+                });
+            }
+        });
+    }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
