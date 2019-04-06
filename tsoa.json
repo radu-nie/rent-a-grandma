@@ -1,0 +1,14 @@
+{
+    "swagger": {
+        "outputDirectory": "./dist/server/",
+        "entryFile": "./server/src/index.ts",
+        "basePath": "/api/routes"
+    },
+    "routes": {
+
+        "basePath": "/api/b2b",
+        "entryFile": "./server/src/index.ts",
+        "middleware": "express",
+        "routesDir": "././server/src/routes"
+    }
+}

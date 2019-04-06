@@ -45,15 +45,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoaderComponent } from './_helpers/loader/loader.component';
 import { LoaderService } from './_helpers/loader/loader.service';
 import { AlertComponent } from './_directives';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
+import { LoginComponent } from './components/shared/login';
+import { RegisterComponent } from './components/shared/register';
 import { HomeComponent } from './home/home.page';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { Globals } from '../globals';
+import { TouchdownComponent } from './components/touchdown/touchdown.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +61,8 @@ import { Globals } from '../globals';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    LoaderComponent
+    LoaderComponent,
+    TouchdownComponent
   ],
   entryComponents: [],
   imports: [

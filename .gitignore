@@ -7,3 +7,4 @@ server/dist/
 dist/
 dist/server
 dist/client
+plugins/
