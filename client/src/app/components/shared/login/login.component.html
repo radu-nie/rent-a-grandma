@@ -1,12 +1,53 @@
+<ion-header>
+
+    <ion-toolbar>
+        <ion-title>Login</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+
+
 <ion-content padding>
+    <form [formGroup]="loginForm">
+        <ion-list>
+            <ion-item>
+                <ion-label>Email</ion-label>
+                <ion-input type="text" formControlName="email" name="email"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="f.email.hasError('required') && f.email.touched">
+                <p>*Email is required</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Password</ion-label>
+                <ion-input type="password" name="password" formControlName="password"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="f.password.hasError('required') && f.password.touched">
+                <p>*password is required</p>
+            </ion-item>
+        </ion-list>
+
+        <ion-row class="signin">
+            <ion-col>
+                <ion-button (click)="login()" color="primary" shape="full" expand="block">Submit</ion-button>
+                <ion-button [routerLink]="['/register']" router-direction="forward" color="secondary" shape="full"
+                    expand="block">Register
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>
+
+
+<!-- <ion-content padding>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login">
         <ion-card>
             <ion-card-header>
                 <ion-card-title fxLayout="column" fxLayoutAlign="center center" class="center">
                     <section class="logo-holder">
                         <h1><img src="client/src/assets/images/logo.png" /></h1>
-                        <!-- <p>{{gps.coords.latitude}}</p>
-                        <p>{{gps.coords.longitude}}</p> -->
+                        <p>{{gps.coords.latitude}}</p>
+                        <p>{{gps.coords.longitude}}</p>
 
                     </section>
                     <mat-divider></mat-divider>
@@ -59,4 +100,4 @@
 
 
     </form>
-</ion-content>
+</ion-content> -->
