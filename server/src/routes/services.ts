@@ -9,5 +9,4 @@ serviceRouter.get('', (request: Request, response: any) => {
     });
 });
 
-
 export { serviceRouter }
