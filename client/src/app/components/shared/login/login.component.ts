@@ -24,10 +24,9 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     gps: Geoposition;
-    cardDetail: any;
     flashLight: boolean = false;
     file: any;
-    constructor(private cardIO: CardIO,
+    constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
@@ -39,15 +38,11 @@ export class LoginComponent implements OnInit {
         private platform: Platform,
         private backlight: Backlight,
         platformLocation: PlatformLocation
-    ) {
-        console.log((platformLocation as any).location);
-        console.log((platformLocation as any).location.href);
-        console.log((platformLocation as any).location.origin);
-    }
+    ) { }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email]],
+            email: ['', Validators.email],
             password: ['', Validators.required],
             file: [null]
         });
@@ -62,22 +57,6 @@ export class LoginComponent implements OnInit {
             this.test();
 
         })
-
-        // this.sim.getSimInfo().then(
-        //     (info) => {
-        //         this.r = info
-        //     },
-        //     (err) => console.log('Unable to get sim info: ', err)
-        // );
-
-        // this.sim.hasReadPermission().then(
-        //     (info) => console.log('Has permission: ', info)
-        // );
-
-        // this.sim.requestReadPermission().then(
-        //     () => console.log('Permission granted'),
-        //     () => console.log('Permission denied')
-        // );
     }
 
     // convenience getter for easy access to form fields
@@ -93,7 +72,7 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    onSubmit() {
+    login() {
         this.submitted = true;
 
         // stop here if form is invalid
@@ -116,40 +95,12 @@ export class LoginComponent implements OnInit {
                 });
     }
 
-    scan() {
-        this.cardIO.canScan()
-            .then(
-                (res: boolean) => {
-                    if (res) {
-                        let options = {
-                            requireExpiry: true,
-                            requireCVV: false,
-                            requirePostalCode: false
-                        };
-                        this.cardIO.scan(options).then(data => {
-                            this.cardDetail = data;
-                        }).catch(err => {
-                            throwError(err);
-                        }).finally();
 
-                    }
-                }
-            );
-    }
-    toggleFlashLight() {
-
-        // Turn backlight on
-        this.backlight.on().then(() => console.log('backlight on'));
-
-
-
-
-    }
     submitPhoto() {
-        debugger;
         if (this.file)
             this.authenticationService.savePhoto(this.file);
     }
+
     onFileChange(event) {
         let reader = new FileReader();
         if (event.target.files && event.target.files.length > 0) {

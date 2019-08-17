@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './_guards';
 import { AlertService, AuthenticationService, UserService } from './_services';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JsonpModule } from '@angular/http';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 //Angular Material Components
 import { MatCheckboxModule, MatNativeDateModule, MatDividerModule } from '@angular/material';
@@ -73,6 +74,7 @@ import { TouchdownComponent } from './components/touchdown/touchdown.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    JsonpModule,
     MatButtonModule,
     MatCheckboxModule,
     MatTableModule,

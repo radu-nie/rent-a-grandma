@@ -8,3 +8,4 @@ dist/
 dist/server
 dist/client
 plugins/
+platforms/

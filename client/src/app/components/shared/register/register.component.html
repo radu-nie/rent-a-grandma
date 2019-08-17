@@ -1,3 +1,137 @@
+<ion-header>
+
+    <ion-toolbar>
+        <ion-title>Register</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="registerForm">
+        <ion-row *ngIf="!registrationTypeSelected">
+            <ion-col>
+                <ion-button class="registrationType" shape="full" expand="block" color="secondary"
+                    (click)="setRegistrationType(0)">
+                    Client
+                </ion-button>
+                <ion-button class="registrationType" shape="full" expand="block" color="secondary"
+                    (click)="setRegistrationType(1)">
+                    Provider
+                </ion-button>
+            </ion-col>
+        </ion-row>
+
+        <ion-list>
+            <ion-item *ngIf="showCustomer || showProvider">
+                <ion-label>Name</ion-label>
+                <ion-input type="text" formControlName="name" name="name"></ion-input>
+                <mat-error *ngIf="f.name.valid == false">
+                    Name is required
+                </mat-error>
+            </ion-item>
+            <ion-item *ngIf="showCustomer || showProvider">
+                <ion-label>Email</ion-label>
+                <ion-input type="text" formControlName="email" placeholder="email" name="email"></ion-input>
+                <mat-error *ngIf="f.email.valid == false">
+                    Email is required
+                </mat-error>
+            </ion-item>
+            <ion-item *ngIf="showCustomer || showProvider">
+                <ion-label>Password</ion-label>
+                <ion-input type="password" name="password" formControlName="password"></ion-input>
+                <mat-error *ngIf="f.password.valid == false">
+                    Password is required
+                </mat-error>
+            </ion-item>
+            <ion-item *ngIf="showProvider">
+                <ion-label>Acord prelucrare date</ion-label>
+                <ion-checkbox slot="end" formControlName="agreement"></ion-checkbox>
+                <mat-error *ngIf="f.agreement.valid == false">
+                    Agreement is required
+                </mat-error>
+            </ion-item>
+            <ion-item *ngIf="showProvider">
+                <ion-label>CNP</ion-label>
+                <ion-input type="text" name="uniqueId" formControlName="uniqueId"></ion-input>
+                <mat-error *ngIf="f.uniqueId.valid == false">
+                    Unique identifier is required
+                </mat-error>
+            </ion-item>
+
+
+
+
+            <ion-item *ngIf="showProvider">
+                <ion-label>Serie buletin</ion-label>
+                <ion-input type="text" name="serialCode" formControlName="serialCode"></ion-input>
+                <mat-error *ngIf="f.serialCode.valid == false">
+                    Serial code is required
+                </mat-error>
+            </ion-item>
+            <ion-item *ngIf="showProvider">
+                <ion-label> Numar buletin</ion-label>
+                <ion-input type="text" name="serialNo" formControlName="serialNo"></ion-input>
+                <mat-error *ngIf="f.serialNo.valid == false">
+                    Serial number is required
+                </mat-error>
+            </ion-item>
+            <ion-item *ngIf="showProvider">
+                <ion-label>Adresa</ion-label>
+                <ion-textarea placeholder="Enter address information here..." name="address" formControlName="address">
+                </ion-textarea>
+                <mat-error *ngIf="f.address.valid == false">
+                    Address is required
+                </mat-error>
+            </ion-item>
+
+            <ion-item *ngIf="showProvider" (click)="triggerGetPhoto()">
+                <ion-label>
+                    <ion-icon name="camera"></ion-icon> Poza cazier
+                </ion-label>
+                <ion-input type="text" name="criminalHistoryPhoto" formControlName="criminalHistoryPhoto"></ion-input>
+
+            </ion-item>
+            <ion-item *ngIf="showProvider" (click)="triggerGetPhoto()">
+                <ion-label>
+                    <ion-icon name="camera"></ion-icon> Poza factura utilitati
+                </ion-label>
+                <ion-input type="text" name="utilitiesPhoto" formControlName="utilitiesPhoto"></ion-input>
+
+            </ion-item>
+            <ion-item *ngIf="showProvider" (click)="triggerGetPhoto()">
+                <ion-label>
+                    <ion-icon name="camera"></ion-icon> Poza faciala
+                </ion-label>
+                <ion-input type="text" name="facialPhoto" formControlName="facialPhoto"></ion-input>
+
+            </ion-item>
+
+
+
+
+
+
+        </ion-list>
+
+        <ion-row class="signin">
+            <ion-col *ngIf="registrationTypeSelected">
+                <ion-button (click)="register()" color="primary" shape="full" expand="block">Register</ion-button>
+                <ion-button (click)="resetRegistrationType()" color="light" shape="full" expand="block">
+                    Cancel</ion-button>
+
+            </ion-col>
+            <ion-col *ngIf="registrationTypeSelected == false">
+                <ion-button [routerLink]="['/login']" router-direction="root" color="light" shape="full" expand="block">
+                    Cancel</ion-button>
+            </ion-col>
+        </ion-row>
+
+    </form>
+</ion-content>
+
+
+<!-- 
 <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
     (ionScrollEnd)="logScrollEnd()">
 
@@ -51,7 +185,7 @@
 
         </ion-col>
     </ion-row>
-</ion-content>
+</ion-content> -->
 
 
 
