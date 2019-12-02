@@ -5,6 +5,7 @@ const compression = require("compression");
 
 import { userRouter } from './routes/user';
 import { serviceRouter } from "./routes/services";
+import { fileRouter } from "./routes/file";
 
 const mongoose = require('mongoose');
 const config = require('config');
@@ -18,6 +19,8 @@ const app = express();
 exports.app = app;
 
 console.log('Application Started');
+
+
 
 app.disable('x-powered-by');
 app.use(bodyParser.json({
@@ -42,38 +45,9 @@ app.use(device.capture({
 
 app.use('/api/users', userRouter);
 app.use('/api/services', serviceRouter);
+app.use('/api/files', fileRouter);
 
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}!`);
 });
-/*
-async function createCustomer(customerData: any) {
-    const customer = new Customer(customerData);
-    const result = await customer.save();
-    console.log("Created customer : " + result);
-}
-
-createCustomer({
-    userName: "customer1UserName",
-    password: "C1UN",
-    firstName: "C1_F_N",
-    lastName: "C1_L_N",
-    active: true,
-    token: "C1_Token"
-});
-
-async function createServiceJobProvider(serviceJobProviderData: any) {
-    const serviceJobProvider = new ServiceJobProvider(serviceJobProviderData);
-    const result = await serviceJobProvider.save();
-    console.log("Created service job provider : " + result);
-}
-
-createServiceJobProvider({
-    userName: "provider1UserName",
-    password: "P1UN",
-    firstName: "P1_F_N",
-    lastName: "P1_L_N",
-    active: true,
-    token: "P1_Token"
-});*/
