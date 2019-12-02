@@ -14,7 +14,6 @@ export class AuthenticationService {
 
         return this.http.post<any>(this.globals.serverUrl + `users/authenticate`, { email, password })
             .pipe(map((user: any) => {
-                debugger;
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -28,6 +27,10 @@ export class AuthenticationService {
     logout(): void {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+    }
+
+    checkAuthenticationToken() {
+
     }
 
     savePhoto(photo) {

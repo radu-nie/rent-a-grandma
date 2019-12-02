@@ -22,94 +22,104 @@
             </ion-col>
         </ion-row>
 
-        <ion-list>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+            <!-- <ion-list-header>
+                Items with Labels
+            </ion-list-header>
+            <ion-item>
+                <ion-label>Label</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon slot="end" name="logo-ionic"></ion-icon>
+                <ion-label>Label with Icon</ion-label>
+            </ion-item> -->
             <ion-item *ngIf="showCustomer || showProvider">
-                <ion-label>Name</ion-label>
-                <ion-input type="text" formControlName="name" name="name"></ion-input>
-                <mat-error *ngIf="f.name.valid == false">
+                <ion-label position="stacked">Name <ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input type="text" formControlName="name" name="name" required></ion-input>
+                <!-- <mat-error *ngIf="f.name.valid == false">
                     Name is required
-                </mat-error>
+                </mat-error> -->
             </ion-item>
             <ion-item *ngIf="showCustomer || showProvider">
-                <ion-label>Email</ion-label>
-                <ion-input type="text" formControlName="email" placeholder="email" name="email"></ion-input>
-                <mat-error *ngIf="f.email.valid == false">
+                <ion-label position="stacked">Email <ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input type="text" formControlName="email" name="email"></ion-input>
+                <!-- <mat-error *ngIf="f.email.valid == false">
                     Email is required
-                </mat-error>
+                </mat-error> -->
             </ion-item>
             <ion-item *ngIf="showCustomer || showProvider">
-                <ion-label>Password</ion-label>
+                <ion-label position="stacked">Password <ion-text color="danger">*</ion-text>
+                </ion-label>
                 <ion-input type="password" name="password" formControlName="password"></ion-input>
-                <mat-error *ngIf="f.password.valid == false">
+                <!-- <mat-error *ngIf="f.password.valid == false">
                     Password is required
-                </mat-error>
+                </mat-error> -->
             </ion-item>
             <ion-item *ngIf="showProvider">
-                <ion-label>Acord prelucrare date</ion-label>
+                <ion-label position="stacked">Acord prelucrare date <ion-text color="danger">*</ion-text>
+                </ion-label>
                 <ion-checkbox slot="end" formControlName="agreement"></ion-checkbox>
-                <mat-error *ngIf="f.agreement.valid == false">
+                <!-- <mat-error *ngIf="f.agreement.valid == false">
                     Agreement is required
-                </mat-error>
+                </mat-error> -->
             </ion-item>
             <ion-item *ngIf="showProvider">
-                <ion-label>CNP</ion-label>
+                <ion-label position="stacked">CNP <ion-text color="danger">*</ion-text>
+                </ion-label>
                 <ion-input type="text" name="uniqueId" formControlName="uniqueId"></ion-input>
-                <mat-error *ngIf="f.uniqueId.valid == false">
+                <!-- <mat-error *ngIf="f.uniqueId.valid == false">
                     Unique identifier is required
-                </mat-error>
+                </mat-error> -->
             </ion-item>
 
 
 
 
             <ion-item *ngIf="showProvider">
-                <ion-label>Serie buletin</ion-label>
+                <ion-label position="stacked">Serie buletin <ion-text color="danger">*</ion-text>
+                </ion-label>
                 <ion-input type="text" name="serialCode" formControlName="serialCode"></ion-input>
-                <mat-error *ngIf="f.serialCode.valid == false">
+                <!-- <mat-error *ngIf="f.serialCode.valid == false">
                     Serial code is required
-                </mat-error>
+                </mat-error> -->
             </ion-item>
             <ion-item *ngIf="showProvider">
-                <ion-label> Numar buletin</ion-label>
+                <ion-label position="stacked"> Numar buletin <ion-text color="danger">*</ion-text>
+                </ion-label>
                 <ion-input type="text" name="serialNo" formControlName="serialNo"></ion-input>
-                <mat-error *ngIf="f.serialNo.valid == false">
+                <!-- <mat-error *ngIf="f.serialNo.valid == false">
                     Serial number is required
-                </mat-error>
+                </mat-error> -->
             </ion-item>
             <ion-item *ngIf="showProvider">
-                <ion-label>Adresa</ion-label>
+                <ion-label position="stacked"> Adresa <ion-text color="danger">*</ion-text>
+                </ion-label>
                 <ion-textarea placeholder="Enter address information here..." name="address" formControlName="address">
                 </ion-textarea>
-                <mat-error *ngIf="f.address.valid == false">
+                <!-- <mat-error *ngIf="f.address.valid == false">
                     Address is required
-                </mat-error>
+                </mat-error> -->
             </ion-item>
 
             <ion-item *ngIf="showProvider" (click)="triggerGetPhoto()">
-                <ion-label>
-                    <ion-icon name="camera"></ion-icon> Poza cazier
-                </ion-label>
+
+                <ion-icon slot="start" name="image"></ion-icon> Poza cazier
+
                 <ion-input type="text" name="criminalHistoryPhoto" formControlName="criminalHistoryPhoto"></ion-input>
 
             </ion-item>
             <ion-item *ngIf="showProvider" (click)="triggerGetPhoto()">
-                <ion-label>
-                    <ion-icon name="camera"></ion-icon> Poza factura utilitati
-                </ion-label>
+                <ion-icon slot="start" name="image"></ion-icon> Poza factura utilitati
                 <ion-input type="text" name="utilitiesPhoto" formControlName="utilitiesPhoto"></ion-input>
 
             </ion-item>
             <ion-item *ngIf="showProvider" (click)="triggerGetPhoto()">
-                <ion-label>
-                    <ion-icon name="camera"></ion-icon> Poza faciala
-                </ion-label>
+                <ion-icon slot="start" name="image"></ion-icon> Poza faciala
                 <ion-input type="text" name="facialPhoto" formControlName="facialPhoto"></ion-input>
 
             </ion-item>
-
-
-
-
 
 
         </ion-list>
