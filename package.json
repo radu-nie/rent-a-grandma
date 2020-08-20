@@ -85,7 +85,7 @@
         "@ionic/angular": "^4.11.5",
         "@ionic/pro": "2.0.4",
         "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-        "bcrypt": "^3.0.7",
+        "bcrypt": "^5.0.0",
         "body-parser": "^1.19.0",
         "card.io.cordova.mobilesdk": "2.1.0",
         "compression": "^1.7.3",
